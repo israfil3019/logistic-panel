@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/logistic-panel/static/css/main.a2a68c18.chunk.css",
+    "main.js": "/logistic-panel/static/js/main.4db9e168.chunk.js",
+    "main.js.map": "/logistic-panel/static/js/main.4db9e168.chunk.js.map",
+    "runtime-main.js": "/logistic-panel/static/js/runtime-main.46a01a0a.js",
+    "runtime-main.js.map": "/logistic-panel/static/js/runtime-main.46a01a0a.js.map",
+    "static/css/2.4659568d.chunk.css": "/logistic-panel/static/css/2.4659568d.chunk.css",
+    "static/js/2.b7b89477.chunk.js": "/logistic-panel/static/js/2.b7b89477.chunk.js",
+    "static/js/2.b7b89477.chunk.js.map": "/logistic-panel/static/js/2.b7b89477.chunk.js.map",
+    "static/js/3.ee1a4e61.chunk.js": "/logistic-panel/static/js/3.ee1a4e61.chunk.js",
+    "static/js/3.ee1a4e61.chunk.js.map": "/logistic-panel/static/js/3.ee1a4e61.chunk.js.map",
+    "index.html": "/logistic-panel/index.html",
+    "static/css/2.4659568d.chunk.css.map": "/logistic-panel/static/css/2.4659568d.chunk.css.map",
+    "static/css/main.a2a68c18.chunk.css.map": "/logistic-panel/static/css/main.a2a68c18.chunk.css.map",
+    "static/js/2.b7b89477.chunk.js.LICENSE.txt": "/logistic-panel/static/js/2.b7b89477.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/logistic-panel/static/media/Gilroy-Medium.23dfbc19.ttf",
+    "static/media/avatar.8da72cf0.jpg": "/logistic-panel/static/media/avatar.8da72cf0.jpg",
+    "static/media/poshta_logo.11b11c31.png": "/logistic-panel/static/media/poshta_logo.11b11c31.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.46a01a0a.js",
+    "static/css/2.4659568d.chunk.css",
+    "static/js/2.b7b89477.chunk.js",
+    "static/css/main.a2a68c18.chunk.css",
+    "static/js/main.4db9e168.chunk.js"
+  ]
+}
