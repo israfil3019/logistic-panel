@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { CargoContext } from "../../../context/CargoContext";
-import CargoItem from "./CargoItem";
+import { CargoContext } from "../context/CargoContext";
+import CargoItem from "../components/main/CargoItem";
 import { FiSearch } from "react-icons/fi";
 
 const Operasyon = () => {

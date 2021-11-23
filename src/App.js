@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import CanlıEkran from "./components/main/CanlıEkran";
-import Manifesto from "./components/main/Manifesto";
-import TimeZone from "./components/main/TimeZone";
-import ZonePlan from "./components/main/ZonePlan";
-import Operasyon from "./components/main/operasyon/Operasyon";
+import CanlıEkran from "./pages/CanlıEkran";
+import Manifesto from "./pages/Manifesto";
+import TimeZone from "./pages/TimeZone";
+import ZonePlan from "./pages/ZonePlan";
+import Operasyon from "./pages/Operasyon";
 import { CargoProvider } from "./context/CargoContext";
 import Buttons from "./components/Buttons";
 
