@@ -1,38 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-// import { CargoContext } from "../../../context/CargoContext";
+import { CargoContext } from "../../../context/CargoContext";
 import CargoItem from "./CargoItem";
 import { FiSearch } from "react-icons/fi";
-import { RiCloseLine } from "react-icons/ri";
-import { getData } from "../../../functions/Functions";
 
 const Operasyon = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // const [cargos, setCargos] = useContext(CargoContext);
-  const [cargos, setCargos] = useState([]);
+  const [cargos, setCargos] = useContext(CargoContext);
 
-  const handleFilter = (event) => {
-    setSearchTerm(event.target.value);
-    if (searchTerm === "") {
-      getData("data.json").then((res) => {
-        setCargos(res.data);
-      });
-    } else
-      setCargos(
-        cargos?.filter((cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1)
-      );
-    setSearchTerm("");
-  };
-
-  useEffect(() => {
-    getData("data.json")
-      .then((res) => {
-        setCargos(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const filteredCargos = cargos.filter(
+    (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
+  );
 
   return (
     <div>
@@ -49,7 +27,7 @@ const Operasyon = () => {
             <Row className="justify-content-center">
               <div className="search_area">
                 <input
-                  onChange={handleFilter}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   type="text"
                   placeholder="Arama"
                   id="search_input"
@@ -64,7 +42,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
-                {cargos
+                {filteredCargos
                   .filter((cargo) => cargo.durum)
                   .map((cargo) => (
                     <CargoItem cargo={cargo} key={cargo.id} />
@@ -76,7 +54,7 @@ const Operasyon = () => {
             <Row className="justify-content-center">
               <div className="search_area">
                 <input
-                  // onChange={handleFilter}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   type="text"
                   placeholder="Arama"
                   id="search_input"
@@ -91,7 +69,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
-                {cargos
+                {filteredCargos
                   .filter((cargo) => !cargo.durum)
                   .map((cargo) => (
                     <CargoItem cargo={cargo} key={cargo.id} />
