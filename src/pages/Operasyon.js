@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { CargoContext } from "../context/CargoContext";
-import CargoItem from "../components/CargoItem";
+import CargoAssign from "../components/CargoAssign";
 import { FiSearch } from "react-icons/fi";
 
 const Operasyon = () => {
@@ -55,7 +55,7 @@ const Operasyon = () => {
                 {filteredCargos
                   .filter((cargo) => cargo.durum)
                   .map((cargo) => (
-                    <CargoItem cargo={cargo} key={cargo.id} />
+                    <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}
               </Col>
             </Row>
@@ -88,7 +88,7 @@ const Operasyon = () => {
                 {filteredCargoss
                   .filter((cargo) => !cargo.durum)
                   .map((cargo) => (
-                    <CargoItem cargo={cargo} key={cargo.id} />
+                    <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}
               </Col>
             </Row>

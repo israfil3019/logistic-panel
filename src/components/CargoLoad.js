@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
-const CargoItem = (props) => {
+const CargoLoad = (props) => {
   const [checked, setChecked] = useState(false);
   const cargo = props.cargo;
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
   let myClass = "kargo_bilgileri";
-  if (cargo.type === 1)  myClass = "kargo_bilgileri red";
+  if (cargo.type === 1) myClass = "kargo_bilgileri red";
   else if (cargo.type === 2) myClass = "kargo_bilgileri blue";
   else myClass = "kargo_bilgileri yellow";
-  
+
   return (
     <Container className={myClass}>
       <Row>
@@ -43,8 +43,25 @@ const CargoItem = (props) => {
           <Row>{cargo.desi}</Row>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          {cargo.yukleme ? (
+            <Row>Yüklenen Planlanan Yer</Row>
+          ) : (
+            <Row>Yüklemesi Planlanan Yer</Row>
+          )}
+          <Row>{cargo.adres}</Row>
+        </Col>
+        <Col>
+          <Row>.---------------.</Row>
+        </Col>
+        <Col>
+          <Row>Araç Yada Kurye İsmi</Row>
+          <Row>{cargo.alici}</Row>
+        </Col>
+      </Row>
     </Container>
   );
 };
 
-export default CargoItem;
+export default CargoLoad;
