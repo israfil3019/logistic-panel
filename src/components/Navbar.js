@@ -3,11 +3,12 @@ import logo from "../assets/poshta_logo.png";
 import avatar from "../assets/avatar.jpg";
 import { RiShutDownLine } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
-import { CargoContext } from "../context/CargoContext";
 import { IconContext } from "react-icons";
+import { useHistory } from "react-router";
 
-const Navbar = (props) => {
-  const [cargos, SetCargos] = useContext(CargoContext);
+
+const Navbar = () => {
+  let history = useHistory()
   const [kullanici, setKullanici] = useState([
     {
       resim: avatar,
@@ -20,6 +21,10 @@ const Navbar = (props) => {
       numara: 544444444,
     },
   ]);
+
+  const handleLogout = () =>{
+    history.push('/login')
+  }
   return (
     <div className="mybar">
       <div className="logo">
@@ -62,7 +67,7 @@ const Navbar = (props) => {
         <div>
           <button className='btn rounded-circle'>
             <IconContext.Provider value={{ className: "top-react-icons" }}>
-              <RiShutDownLine/>
+              <RiShutDownLine onClick={handleLogout}/>
             </IconContext.Provider>
           </button>
         </div>

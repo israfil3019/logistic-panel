@@ -6,7 +6,7 @@ import { FiSearch } from "react-icons/fi";
 
 const Operasyon = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [cargos, setCargos] = useContext(CargoContext);
+  const {cargos} = useContext(CargoContext);
 
   const filteredCargos = cargos.filter(
     (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
@@ -24,8 +24,14 @@ const Operasyon = () => {
         </Row>
         <Row className="justify-content-center ">
           <Col id="kargo_gösterim" className="col-sm-5">
-            <Row className="justify-content-center">
-              <div className="search_area">
+            <Row className="search_container">
+              <Col className="search_area">
+                <div className="process_area">
+                  <button>Atanmamış</button>
+                  <button>Taşı</button>
+                  <button>İptal</button>
+                  <button>Sorun</button>
+                </div>
                 <input
                   onChange={(e) => setSearchTerm(e.target.value)}
                   type="text"
@@ -38,7 +44,7 @@ const Operasyon = () => {
                   fontSize={"19px"}
                   color={"#145AA0"}
                 />
-              </div>
+              </Col>
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
@@ -51,13 +57,19 @@ const Operasyon = () => {
             </Row>
           </Col>
           <Col sm={5} id="kargo_gösterim2">
-            <Row className="justify-content-center">
-              <div className="search_area">
+            <Row className="search_container">
+              <Col className="search_area">
+                <div className="process_area">
+                  <button>Atanmamış</button>
+                  <button>Taşı</button>
+                  <button>İptal</button>
+                  <button>Sorun</button>
+                </div>
                 <input
                   onChange={(e) => setSearchTerm(e.target.value)}
                   type="text"
                   placeholder="Arama"
-                  id="search_input"
+                  id="search_input2"
                   className="form-control"
                 />
                 <FiSearch
@@ -65,7 +77,7 @@ const Operasyon = () => {
                   fontSize={"19px"}
                   color={"#145AA0"}
                 />
-              </div>
+              </Col>
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">

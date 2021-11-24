@@ -97,24 +97,29 @@ html {
   border-bottom: 4px #005bbb solid;
 }
 
-#dropdown-basic::after {
-  display: none;
-  background-color: #145aa0;
-}
+/* Buttons Start */
 #navbar_alt {
   margin: 28px;
   background-color: #f7f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #004e9c;
 }
 
 #navbar_alt .btn-lg {
+  color: #004E9C;
   width: 189px;
   height: 71px;
   box-shadow: 0 3px 6px #cbd5e6;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 13px;
+  margin: 8px;
+
 }
+/* Buttons End */
+
+/* Kargo Gösterim Start */
 .assign_kargo {
   overflow-y: auto;
   height: 669px;
@@ -139,18 +144,23 @@ html {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+  right:8px;
 }
 #checkbox {
-  background-color: #e9e9e9;
   border: none;
   width: 1rem;
   height: 1rem;
+  background-color: #E9E9E9;
 }
 #atanmıs_head {
   font-size: 20px;
   font-weight: 600;
   color: #145aa0;
   margin-bottom: 18px;
+}
+#atanmıs_head div{
+  width: 636px;
 }
 .search_icon {
   position: relative;
@@ -164,6 +174,7 @@ html {
   border-bottom: 1px solid #ecf1f7;
 }
 .search_area input {
+  position: relative;
   text-indent: 10px;
   border: none;
   background-color: #ecf1f7;
@@ -171,15 +182,32 @@ html {
   width: 184px;
   height: 42px;
 }
+.process_area{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-right: 2rem;
+  width: 325px;
+}
+.process_area button{
+  border: none;
+  background-color: white;
+  color: #145AA0;
+  font-size: 14px;
+  font-weight: 600;
+}
 
 #kargo_gösterim {
+  width: 636px;
   background-color: white;
   box-shadow: 0 3px 6px #cbd5e6;
   border-radius: 25px;
   margin-right: 10px;
 }
 
+
 #kargo_gösterim2 {
+  width: 636px;
   background-color: white;
   box-shadow: 0 3px 6px #cbd5e6;
   border-radius: 25px;
@@ -213,14 +241,20 @@ html {
 #assign_kargo_row2 {
   padding: 0 16px 16px 30px;
 }
+/* Kargo Gösterim End */
+
 
 /* Login Page Start */
-.login_logo img{
+.img-cotainer {
+  display: flex;
+  justify-content: center;
+}
+.login_logo img {
   width: 450px;
   margin-bottom: 30px;
 }
 .login-main {
-  font-family: 'Rubik', sans-serif;
+  font-family: "Rubik", sans-serif;
   background-color: white;
   width: 450px;
   height: 480px;
@@ -228,23 +262,22 @@ html {
   box-shadow: rgba(8, 21, 66, 0.05) 0px 0px 37px;
   color: rgb(43, 43, 43);
   border-radius: 10px;
-
 }
-.theme-form h4{
+.theme-form h4 {
   margin-bottom: 5px;
 }
-.theme-form p{
+.theme-form p {
   color: rgb(137, 137, 137);
   font-size: 16px;
   margin-bottom: 25px;
 }
-.form-group{
+.form-group {
   margin-bottom: 10px;
   color: rgb(137, 137, 137);
 }
-.form-group input{
-  border:2px solid rgb(239, 239, 239);
-  background-color:rgb(232, 240, 254);
+.form-group input {
+  border: 2px solid rgb(239, 239, 239);
+  background-color: rgb(232, 240, 254);
   font-size: 14px;
   width: 100%;
   transition: all 0.3s ease 0s;
@@ -252,17 +285,17 @@ html {
   line-height: 1.5;
   border-radius: 4px;
 }
-.checkbox_password{
+.checkbox_password {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-#checkbox1{
+#checkbox1 {
   margin: 10px 10px 10px 0;
   width: 1rem;
   height: 1rem;
 }
-#signin_btn{
+#signin_btn {
   padding: 6px 28px;
 }
 .show-hide {

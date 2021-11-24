@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useHistory } from "react-router";
 // import { useCookies } from "react-cookie";
 // import { useNavigate } from "react-router";
 import logo from "../assets/poshta_logo.png";
 
-// import LoginPageStyle from "./LoginPageStyle.module.css";
-
-export default function LoginPage() {
+export default function LoginPage({ setAuth, auth }) {
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
   // // const [token, setToken] = useCookies(["mytoken"]);
-  const [isLogin, setIsLogin] = useState(true);
-  let navigate = useNavigate();
+  let history = useHistory();
   const handleLogin = (e) => {
+    setAuth(!auth)
     e.preventDefault();
-    setIsLogin(!isLogin);
-    navigate('/operasyon')
-  }
+    history.push("/operasyon");
+  };
 
   // const handleLogin = () => {
   //   Functions.LoginUser({ username, password })
@@ -41,19 +38,17 @@ export default function LoginPage() {
         <div className="col-12 p-0">
           <div className="login-card">
             <div>
-              <div>
+              <div className="img-cotainer">
                 <a className="login_logo" href="/">
                   <img
-                    className="img-fluid for-light"
+                    className="img-fluid for-light "
                     src={logo}
                     alt="loginpage"
                   />
                 </a>
               </div>
               <div className="login-main mx-auto">
-                <form className="theme-form"
-                 onSubmit={handleLogin}
-                 >
+                <form className="theme-form" onSubmit={handleLogin}>
                   <h4>Login</h4>
                   <p>Enter your email & password to login</p>
                   <div className="form-group">
@@ -64,7 +59,6 @@ export default function LoginPage() {
                       required=""
                       placeholder="****@gmail.com"
                       name="email"
-                      value=""
                     />
                   </div>
                   <div className="form-group">
@@ -87,8 +81,12 @@ export default function LoginPage() {
                         Remember password
                       </label>
                     </div>
-                   
-                    <button className="btn btn-primary btn-block" id='signin_btn' type="submit">
+
+                    <button
+                      className="btn btn-primary btn-block"
+                      id="signin_btn"
+                      type="submit"
+                    >
                       Sign in
                     </button>
                   </div>
@@ -102,8 +100,7 @@ export default function LoginPage() {
   );
 }
 
-
-  /* <div>
+/* <div>
 <div id="login">
   <h3 class="text-center text-white pt-5">Login form</h3>
   <div class="container">
@@ -170,4 +167,3 @@ export default function LoginPage() {
   </div>
 </div>
 </div> */
-
