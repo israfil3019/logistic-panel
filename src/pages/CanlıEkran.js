@@ -6,10 +6,14 @@ import { FiSearch } from "react-icons/fi";
 
 const CanlıEkran = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTermm, setSearchTermm] = useState("");
   const {cargos} = useContext(CargoContext);
 
   const filteredCargos = cargos.filter(
     (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
+  );
+  const filteredCargoss = cargos.filter(
+    (cargo) => cargo.ttn.toString().indexOf(searchTermm) > -1
   );
 
     return (
@@ -54,7 +58,7 @@ const CanlıEkran = () => {
               <Row className="justify-content-center">
                 <div className="search_area">
                   <input
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => setSearchTermm(e.target.value)}
                     type="text"
                     placeholder="Arama"
                     id="search_input"
@@ -69,7 +73,7 @@ const CanlıEkran = () => {
               </Row>
               <Row className="justify-content-center" id="assign_kargo_row2">
                 <Col className="assign_kargo">
-                  {filteredCargos
+                  {filteredCargoss
                     .filter((cargo) => !cargo.durum)
                     .map((cargo) => (
                       <CargoItem cargo={cargo} key={cargo.id} />

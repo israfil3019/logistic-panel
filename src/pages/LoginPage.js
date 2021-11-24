@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Form } from "react-bootstrap";
 import { useHistory } from "react-router";
 // import { useCookies } from "react-cookie";
 // import { useNavigate } from "react-router";
@@ -8,21 +9,21 @@ export default function LoginPage({ setAuth, auth }) {
   // const [username, setUsername] = useState("");
   // const [password, setPassword] = useState("");
   // // const [token, setToken] = useCookies(["mytoken"]);
+  const [passwordShown, setPasswordShown] = useState(false);
   let history = useHistory();
   const handleLogin = (e) => {
-    setAuth(!auth)
+    setAuth(!auth);
     e.preventDefault();
     history.push("/operasyon");
   };
 
+  const handleShow = () => {
+    setPasswordShown(!passwordShown);
+  };
+  
   // const handleLogin = () => {
   //   Functions.LoginUser({ username, password })
   //     .then((resp) => setToken("mytoken", resp.token))
-  //     .catch((err) => console.log(err));
-  // };
-  // const handleRegister = () => {
-  //   Functions.RegisterUser({ username, password })
-  //     .then((resp) => handleLogin())
   //     .catch((err) => console.log(err));
   // };
 
@@ -33,7 +34,7 @@ export default function LoginPage({ setAuth, auth }) {
   // }, [history, token]);
 
   return (
-    <div id="login-container" className="container-fluid p-0">
+    <div id="login-container" className="container-fluid p-0 mt-5">
       <div className="row m-0">
         <div className="col-12 p-0">
           <div className="login-card">
@@ -41,7 +42,7 @@ export default function LoginPage({ setAuth, auth }) {
               <div className="img-cotainer">
                 <a className="login_logo" href="/">
                   <img
-                    className="img-fluid for-light "
+                    className="img-fluid for-light"
                     src={logo}
                     alt="loginpage"
                   />
@@ -64,19 +65,20 @@ export default function LoginPage({ setAuth, auth }) {
                   <div className="form-group">
                     <label className="col-form-label">Password</label>
                     <input
+                      id="password_login"
                       className="form-control"
-                      type="password"
+                      type={passwordShown ? "text" : "password"}
                       name="login[password]"
                       required=""
                       placeholder="*********"
                     />
                     <div className="show-hide">
-                      <span className="show"></span>
+                      <span className={passwordShown ? 'hide' : 'show'} onClick={handleShow}></span>
                     </div>
                   </div>
                   <div className="form-group">
-                    <div className="checkbox_password">
-                      <input id="checkbox1" type="checkbox" />
+                    <div className="checkbox_remember">
+                      <Form.Check id="checkbox1" type="checkbox" />
                       <label className="text-muted" for="checkbox1">
                         Remember password
                       </label>

@@ -1,14 +1,13 @@
 import React, { useState, useContext } from "react";
 import logo from "../assets/poshta_logo.png";
 import avatar from "../assets/avatar.jpg";
-import { RiShutDownLine } from "react-icons/ri";
+import { FaPowerOff } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { useHistory } from "react-router";
 
-
 const Navbar = () => {
-  let history = useHistory()
+  let history = useHistory();
   const [kullanici, setKullanici] = useState([
     {
       resim: avatar,
@@ -22,52 +21,61 @@ const Navbar = () => {
     },
   ]);
 
-  const handleLogout = () =>{
-    history.push('/login')
-  }
+  const handleLogout = () => {
+    history.push("/login");
+  };
   return (
     <div className="mybar">
-      <div className="logo">
-        <img className="img" src={logo} alt="logo"></img>
+      <div className="poshta_logo">
+        <img className="poshta_img" src={logo} alt="logo"></img>
         <span>1 Nolu Şube</span>
       </div>
-      <ul className='navbar_list'>
-        <li>
-          <NavLink exact activeClassName="active" to="/operasyon">
+      <div className="navbar_list">
+        <div>
+          <NavLink
+            id="operation_link"
+            exact
+            activeClassName="active"
+            to="/operasyon"
+          >
             Operasyon
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink activeClassName="active" to="/canli-ekran">
             Canlı Ekran
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink activeClassName="active" to="/manifesto">
             Manifestolar
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink activeClassName="active" to="/time-zone">
             Time Zonelar
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink activeClassName="active" to="/zone-plan">
             Zone Planlama
           </NavLink>
-        </li>
-      </ul>
+        </div>
+      </div>
 
       <div className="navbar_right">
         <div className="kullanici_bilgiler">
-          <img src={kullanici[0].resim} alt="avatar" />
-          <p>{kullanici[0].isim}</p>
+          <div>
+            <img src={kullanici[0].resim} alt="avatar" />
+          </div>
+          <div>
+            <p>{kullanici[0].isim}</p>
+          </div>
         </div>
         <div>
-          <button className='btn rounded-circle'>
+          <button className="btn rounded-circle">
             <IconContext.Provider value={{ className: "top-react-icons" }}>
-              <RiShutDownLine onClick={handleLogout}/>
+              <FaPowerOff onClick={handleLogout} />
             </IconContext.Provider>
           </button>
         </div>

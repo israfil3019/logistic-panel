@@ -51,7 +51,7 @@ const ListItem = styled("li")`
   padding: 5px;
   border-bottom: 1px solid #e5e5e5;
   &:hover {
-    color: #fd9e46;
+    color: #145AA0;
   }
   &:last-child {
     border: none;

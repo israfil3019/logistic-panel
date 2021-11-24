@@ -6,10 +6,14 @@ import { FiSearch } from "react-icons/fi";
 
 const Operasyon = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchTermm, setSearchTermm] = useState("");
   const {cargos} = useContext(CargoContext);
 
   const filteredCargos = cargos.filter(
     (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
+  );
+  const filteredCargoss = cargos.filter(
+    (cargo) => cargo.ttn.toString().indexOf(searchTermm) > -1
   );
 
   return (
@@ -17,7 +21,7 @@ const Operasyon = () => {
       <Container>
         <Row
           id="atanmıs_head"
-          className="justify-content-center text-center mb-2"
+          className="justify-content-center text-center"
         >
           <Col sm={5}>Atanmış Kargolar</Col>
           <Col sm={5}>Atanmamış Kargolar</Col>
@@ -66,7 +70,7 @@ const Operasyon = () => {
                   <button>Sorun</button>
                 </div>
                 <input
-                  onChange={(e) => setSearchTerm(e.target.value)}
+                  onChange={(e) => setSearchTermm(e.target.value)}
                   type="text"
                   placeholder="Arama"
                   id="search_input2"
@@ -81,7 +85,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
-                {filteredCargos
+                {filteredCargoss
                   .filter((cargo) => !cargo.durum)
                   .map((cargo) => (
                     <CargoItem cargo={cargo} key={cargo.id} />
