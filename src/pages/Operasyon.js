@@ -1,7 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { CargoContext } from "../context/CargoContext";
+<<<<<<< HEAD:src/pages/Operasyon.js
 import CargoItem from "../components/CargoItem";
+=======
+import CargoItem from "../components/main/CargoItem";
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6:src/components/main/operasyon/Operasyon.js
 import { FiSearch } from "react-icons/fi";
 
 const Operasyon = () => {

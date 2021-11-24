@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router";
 // import { useCookies } from "react-cookie";
 // import { useNavigate } from "react-router";
@@ -55,16 +56,74 @@ export default function LoginPage() {
                  onSubmit={handleLogin}
                  >
                   <h4>Login</h4>
+=======
+import { useCookies } from "react-cookie";
+import { useHistory } from "react-router";
+import Functions from "../Functions";
+import logo from "../assets/poshta_logo.png";
+
+// import LoginPageStyle from "./LoginPage.module.css";
+
+export default function LoginPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(true);
+  const [token, setToken] = useCookies(["mytoken"]);
+  let history = useHistory();
+
+  const handleLogin = () => {
+    Functions.LoginUser({ username, password })
+      .then((resp) => setToken("mytoken", resp.token))
+      .catch((err) => console.log(err));
+  };
+  const handleRegister = () => {
+    Functions.RegisterUser({ username, password })
+      .then((resp) => handleLogin())
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    if (token["mytoken"]) {
+      history.push("/articles");
+    }
+  }, [history, token]);
+
+  return (
+    <div className="container-fluid p-0">
+      <div className="row m-0">
+        <div className="col-3 p-0 mx-auto">
+          <div className="login-card">
+            <div className="justify-content-center">
+              <div>
+                <a className="logo" href="/">
+                  <img
+                    className="img-fluid for-light"
+                    src={logo}
+                    alt="looginpage"
+                  />
+                </a>
+              </div>
+              <div className="login-main">
+                <form className="theme-form">
+                  <h4>Sign in to account</h4>
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
                   <p>Enter your email & password to login</p>
                   <div className="form-group">
                     <label className="col-form-label">Email Address</label>
                     <input
+<<<<<<< HEAD
                       class="form-control"
                       type="email"
                       required=""
                       placeholder="****@gmail.com"
                       name="email"
                       value=""
+=======
+                      className="form-control"
+                      type="email"
+                      required=""
+                      placeholder="Test@gmail.com"
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
                     />
                   </div>
                   <div className="form-group">
@@ -77,18 +136,33 @@ export default function LoginPage() {
                       placeholder="*********"
                     />
                     <div className="show-hide">
+<<<<<<< HEAD
                       <span className="show"></span>
                     </div>
                   </div>
                   <div className="form-group">
                     <div className="checkbox_password">
+=======
+                      <span className="show"> </span>
+                    </div>
+                  </div>
+                  <div className="form-group mb-0">
+                    <div className="checkbox p-0">
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
                       <input id="checkbox1" type="checkbox" />
                       <label className="text-muted" for="checkbox1">
                         Remember password
                       </label>
                     </div>
+<<<<<<< HEAD
                    
                     <button className="btn btn-primary btn-block" id='signin_btn' type="submit">
+=======
+                    <a className="link" href="{{ route('forget-password') }}">
+                      Forgot password?
+                    </a>
+                    <button className="btn btn-primary btn-block" type="submit">
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
                       Sign in
                     </button>
                   </div>
@@ -102,7 +176,11 @@ export default function LoginPage() {
   );
 }
 
+<<<<<<< HEAD
 
+=======
+{
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
   /* <div>
 <div id="login">
   <h3 class="text-center text-white pt-5">Login form</h3>
@@ -170,4 +248,8 @@ export default function LoginPage() {
   </div>
 </div>
 </div> */
+<<<<<<< HEAD
 
+=======
+}
+>>>>>>> eb77c211543fe0ef41369e870946bc334be5f1e6
