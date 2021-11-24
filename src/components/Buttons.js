@@ -1,26 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
-
+import DropdownSube from './DropdownSube'
 const Buttons = () => {
   return (
     <div id="navbar_alt">
-      <Dropdown className="m-1">
-        <Dropdown.Toggle
-          className="btn btn-lg "
-          variant="primary"
-          id="dropdown-basic"
-        >
-          Şube
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Şube-1</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Şube-2</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
-
+      <DropdownSube/>
       <Link
         to="/operasyon/zone-group"
       >
