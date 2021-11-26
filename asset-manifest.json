@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/logistic-panel/static/css/main.026ab362.chunk.css",
-    "main.js": "/logistic-panel/static/js/main.68df9122.chunk.js",
-    "main.js.map": "/logistic-panel/static/js/main.68df9122.chunk.js.map",
+    "main.js": "/logistic-panel/static/js/main.1826a80a.chunk.js",
+    "main.js.map": "/logistic-panel/static/js/main.1826a80a.chunk.js.map",
     "runtime-main.js": "/logistic-panel/static/js/runtime-main.7829098f.js",
     "runtime-main.js.map": "/logistic-panel/static/js/runtime-main.7829098f.js.map",
     "static/css/2.4659568d.chunk.css": "/logistic-panel/static/css/2.4659568d.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.4659568d.chunk.css",
     "static/js/2.6de5774a.chunk.js",
     "static/css/main.026ab362.chunk.css",
-    "static/js/main.68df9122.chunk.js"
+    "static/js/main.1826a80a.chunk.js"
   ]
 }
