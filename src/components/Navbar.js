@@ -25,10 +25,11 @@ const Navbar = () => {
   ]);
 
   const handleLogout = () => {
-    if(token['mytoken']){
-      history.push('/')
-    }
-    removeToken(['mytoken'])
+    // if(token['mytoken']){
+    //   history.push('/')
+    // }
+    // removeToken(['mytoken'])
+    history.push('/')
   }
   return (
     <div className="mybar">

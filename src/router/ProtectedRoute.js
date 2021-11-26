@@ -3,15 +3,15 @@ import { Route, Redirect } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 
-function ProtectedRoute({ component: Component, auth, ...rest }) {
+function ProtectedRoute({ component: Component, ...rest }) {
   const [token] = useCookies(["mytoken"]);
-
+  const auth = true;
 
   return (
     <Route
       {...rest}
       render={(props) =>
-        token["mytoken"] ? (
+        auth ? (
           <Component {...props} />
         ) : (
           <Redirect

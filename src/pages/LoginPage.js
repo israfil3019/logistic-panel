@@ -21,18 +21,19 @@ export default function LoginPage() {
   
   const handleLogin = (e) => {
     e.preventDefault();
-    LoginUser({ email, password })
-      .then((resp) => {
-        console.log(resp.token);
-        setToken("mytoken", resp.token);
-      })
+    history.push('/operasyon')
+    // LoginUser({ email, password })
+    //   .then((resp) => {
+    //     console.log(resp.token);
+    //     setToken("mytoken", resp.token);
+    //   })
   }; 
 
-  useEffect(() => {
-    if (token["mytoken"]){
-      history.push("/operasyon");
-    }
-  }, [history, token]);
+  // useEffect(() => {
+  //   if (token["mytoken"]){
+  //     history.push("/operasyon");
+  //   }
+  // }, [history, token]);
 
   return (
     <div id="login-container" className="container-fluid p-0 mt-5">
