@@ -20,8 +20,8 @@ const Operasyon = () => {
     <div>
       <Container>
         <Row
-          id="atanmıs_head"
-          className="justify-content-center text-center"
+          id="operasyon_header"
+          className="justify-content-center text-center operasyon_header"
         >
           <Col sm={5}>Atanmış Kargolar</Col>
           <Col sm={5}>Atanmamış Kargolar</Col>

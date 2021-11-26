@@ -5,9 +5,12 @@ import { FaPowerOff } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { useHistory } from "react-router";
+import { useCookies } from "react-cookie";
+
 
 const Navbar = () => {
-  let history = useHistory();
+  const [token, setToken, removeToken] = useCookies(['mytoken']);
+  let history = useHistory()
   const [kullanici, setKullanici] = useState([
     {
       resim: avatar,
@@ -22,8 +25,11 @@ const Navbar = () => {
   ]);
 
   const handleLogout = () => {
-    history.push("/login");
-  };
+    if(token['mytoken']){
+      history.push('/')
+    }
+    removeToken(['mytoken'])
+  }
   return (
     <div className="mybar">
       <div className="poshta_logo">
@@ -73,9 +79,9 @@ const Navbar = () => {
           </div>
         </div>
         <div>
-          <button className="btn rounded-circle">
+          <button  onClick={handleLogout} className="btn rounded-circle">
             <IconContext.Provider value={{ className: "top-react-icons" }}>
-              <FaPowerOff onClick={handleLogout} />
+              <FaPowerOff />
             </IconContext.Provider>
           </button>
         </div>

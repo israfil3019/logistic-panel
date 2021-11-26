@@ -14,7 +14,7 @@ const CargoLoad = (props) => {
 
   return (
     <Container className={myClass}>
-      <Row>
+      <Row className="kargo_bilgileri--üst">
         <Col sm={1} className="checkbox">
           <Form.Check
             type="checkbox"
@@ -43,21 +43,26 @@ const CargoLoad = (props) => {
           <Row>{cargo.desi}</Row>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="kargo_bilgiler--alt">
+        <Col sm={4} >
           {cargo.yukleme ? (
-            <Row>Yüklenen Planlanan Yer</Row>
+            <Row id='horizontal_line--left1'>Yüklenen Yer</Row>
           ) : (
-            <Row>Yüklemesi Planlanan Yer</Row>
+            <Row id='horizontal_line--left1'>Yüklemesi Planlanan Yer</Row>
           )}
-          <Row>{cargo.adres}</Row>
+          <Row id='horizontal_line--left2'>{cargo.adres}</Row>
         </Col>
         <Col>
-          <Row>.---------------.</Row>
+          <Row>
+            <div className="horizontal_line">
+              <div className="horizontal_line--dot1"></div>
+              <div className="horizontal_line--dot2"></div>
+            </div>
+          </Row>
         </Col>
-        <Col>
-          <Row>Araç Yada Kurye İsmi</Row>
-          <Row>{cargo.alici}</Row>
+        <Col sm={4} className="text-right">
+          <Row id='horizontal_line--right1'>Araç Yada Kurye İsmi</Row>
+          <Row id='horizontal_line--right2'>{cargo.alici}</Row>
         </Col>
       </Row>
     </Container>

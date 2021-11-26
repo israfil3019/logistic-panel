@@ -38,7 +38,7 @@ const DropDownList = styled("ul")`
   background: #ffffff;
   border: 2px solid #e5e5e5;
   box-sizing: border-box;
-  color: #3faffa;
+  color: #004e9c;
   font-size: 1.3rem;
   font-weight: 500;
   &:first-child {
@@ -51,7 +51,7 @@ const ListItem = styled("li")`
   padding: 5px;
   border-bottom: 1px solid #e5e5e5;
   &:hover {
-    color: #145AA0;
+    color: #005bbb;
   }
   &:last-child {
     border: none;

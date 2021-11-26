@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { CargoProvider } from "../context/CargoContext";
+import React, { useContext, useState } from "react";
+// import { CargoProvider } from "../context/CargoContext";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Buttons from "../components/Buttons";
@@ -8,61 +8,40 @@ import Manifesto from "../pages/Manifesto";
 import TimeZone from "../pages/TimeZone";
 import ZonePlan from "../pages/ZonePlan";
 import Operasyon from "../pages/Operasyon";
-import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
+import { useCookies } from "react-cookie";
 
 const AppRouter = () => {
-  const [auth, setAuth] = useState(false)
-
+  const [token] = useCookies(["mytoken"]);
 
   const AuthContainer = () => (
     <div>
       <Navbar />
       <Buttons />
       <ProtectedRoute
-        auth={auth}
+        token={token}
         exact
         path="/operasyon"
         component={Operasyon}
       />
       <ProtectedRoute
-        auth={auth}
+        token={token}
         exact
         path="/canli-ekran"
         component={CanlıEkran}
       />
-      <ProtectedRoute
-        auth={auth}
-        exact
-        path="/manifesto"
-        component={Manifesto}
-      />
-      <ProtectedRoute
-        auth={auth}
-        exact
-        path="/zone-plan"
-        component={ZonePlan}
-      />
-      <ProtectedRoute
-        auth={auth}
-        exact
-        path="/time-zone"
-        component={TimeZone}
-      />
-
+      <ProtectedRoute exact path="/manifesto" component={Manifesto} />
+      <ProtectedRoute exact path="/zone-plan" component={ZonePlan} />
+      <ProtectedRoute exact path="/time-zone" component={TimeZone} />
     </div>
   );
   return (
     <Router>
-        <Switch>
-          <Route
-            path="/login"
-            exact
-            component={() => <LoginPage auth={auth} setAuth={setAuth} />}
-          />
-          <Route component={AuthContainer} />
-        </Switch>
+      <Switch>
+        <Route path="/" exact component={() => <LoginPage />} />
+        <Route exact component={AuthContainer} />
+      </Switch>
     </Router>
   );
 };

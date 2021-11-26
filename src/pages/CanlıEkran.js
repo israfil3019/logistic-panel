@@ -20,11 +20,11 @@ const CanlıEkran = () => {
     <div>
       <Container>
         <Row
-          id="atanmıs_head"
-          className="justify-content-center text-center mb-2"
+          id="canli-ekran_header"
+          className="justify-content-center text-center operasyon_header"
         >
-          <Col sm={5}>Yüklenmeyi Bekleyen Kargolar</Col>
           <Col sm={5}>Yüklenmiş Kargolar</Col>
+          <Col sm={5}>Yüklenmeyi Bekleyen Kargolar</Col>
         </Row>
         <Row className="justify-content-center ">
           <Col id="kargo_gösterim" className="col-sm-5">
