@@ -39,31 +39,29 @@ html {
 
 /* navbar right */
 .navbar_right {
-  position: relative;
-  right: -4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
 }
 
 .kullanici_bilgiler {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 64px;
 }
 .kullanici_bilgiler img {
   width: 58px;
   height: 58px;
   border-radius: 100%;
+  margin-right: 10px;
 }
 .kullanici_bilgiler p {
   margin: 0;
   font-size: 14px;
   color: #145aa0;
   font-weight: 600;
-  position: relative;
-  left: 10px;
+
 }
 /* navbar right icon */
 .top-react-icons {
@@ -75,8 +73,6 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  left: 50px;
   padding: 0;
   width: 34px;
   height: 34px;
@@ -90,7 +86,6 @@ html {
 /* navbar links */
 .navbar_list {
   display: flex;
-  margin-left: 0;
 }
 
 .navbar_list a {
@@ -100,7 +95,7 @@ html {
   font-size: 20px;
   font-weight: 500;
   font-weight: bold;
-  margin-left: 90px;
+  margin-left: 80px;
 }
 #operation_link {
   margin-left: 0;
@@ -132,6 +127,7 @@ html {
   font-weight: 600;
   border-radius: 13px;
   margin: 8px;
+  overflow-y:auto;
 }
 /* Buttons End */
 
@@ -176,11 +172,11 @@ html {
   position: relative;
   right: 8px;
 }
+
 #checkbox {
-  border: none;
+  border: solid 1px #e9e9e9;
   width: 1rem;
   height: 1rem;
-  background-color: #e9e9e9;
 }
 
 .search_icon {

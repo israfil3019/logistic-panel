@@ -7,13 +7,13 @@ import { FiSearch } from "react-icons/fi";
 const CanlıEkran = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTermm, setSearchTermm] = useState("");
-  const { cargos } = useContext(CargoContext);
+  const { cargosAssigned } = useContext(CargoContext);
 
-  const filteredCargos = cargos.filter(
-    (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
+  const filteredCargos = cargosAssigned.filter(
+    (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTerm) > -1
   );
-  const filteredCargoss = cargos.filter(
-    (cargo) => cargo.ttn.toString().indexOf(searchTermm) > -1
+  const filteredCargoss = cargosAssigned.filter(
+    (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTermm) > -1
   );
 
   return (
@@ -47,7 +47,7 @@ const CanlıEkran = () => {
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
                 {filteredCargos
-                  .filter((cargo) => cargo.yukleme)
+                  .filter((cargo) => cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                     <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}
@@ -74,7 +74,7 @@ const CanlıEkran = () => {
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
                 {filteredCargoss
-                  .filter((cargo) => !cargo.yukleme)
+                  .filter((cargo) => !cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                       <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}

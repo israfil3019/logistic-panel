@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-// import { CargoProvider } from "../context/CargoContext";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Buttons from "../components/Buttons";
@@ -20,27 +19,41 @@ const AppRouter = () => {
       <Navbar />
       <Buttons />
       <ProtectedRoute
-        token={token}
         exact
         path="/operasyon"
         component={Operasyon}
       />
       <ProtectedRoute
-        token={token}
         exact
         path="/canli-ekran"
         component={CanlıEkran}
       />
-      <ProtectedRoute exact path="/manifesto" component={Manifesto} />
-      <ProtectedRoute exact path="/zone-plan" component={ZonePlan} />
-      <ProtectedRoute exact path="/time-zone" component={TimeZone} />
+      <ProtectedRoute
+        exact
+        path="/manifesto"
+        component={Manifesto}
+      />
+      <ProtectedRoute
+        exact
+        path="/zone-plan"
+        component={ZonePlan}
+      />
+      <ProtectedRoute
+        exact
+        path="/time-zone"
+        component={TimeZone}
+      />
     </div>
   );
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={() => <LoginPage />} />
-        <Route exact component={AuthContainer} />
+        <Route
+          path="/"
+          exact
+          component={() => <LoginPage/>}
+        />
+        <Route exact component={token["mytoken"] ? AuthContainer : LoginPage} />
       </Switch>
     </Router>
   );

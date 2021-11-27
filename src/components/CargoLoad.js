@@ -8,8 +8,8 @@ const CargoLoad = (props) => {
     setChecked(event.target.checked);
   };
   let myClass = "kargo_bilgileri";
-  if (cargo.type === 1) myClass = "kargo_bilgileri red";
-  else if (cargo.type === 2) myClass = "kargo_bilgileri blue";
+  if (cargo.Kargo_Durum_ID === 1) myClass = "kargo_bilgileri red";
+  else if (cargo.Kargo_Durum_ID === 2) myClass = "kargo_bilgileri blue";
   else myClass = "kargo_bilgileri yellow";
 
   return (
@@ -34,13 +34,13 @@ const CargoLoad = (props) => {
           <Row>Desi</Row>
         </Col>
         <Col sm={6} className="text-right">
-          <Row>{cargo.ttn}</Row>
-          <Row>{cargo.gonderici}</Row>
-          <Row>{cargo.alici}</Row>
-          <Row>{cargo.adres}</Row>
-          <Row>{cargo.timeZone}</Row>
-          <Row>{cargo.zone}</Row>
-          <Row>{cargo.desi}</Row>
+        <Row>{cargo.Barkod_Kodu}</Row>
+          <Row>{cargo.sender_full_name}</Row>
+          <Row>{cargo.receiver_full_name}</Row>
+          <Row>{cargo.receiver_full_address}</Row>
+          <Row>{cargo.Kargo_Teslim_Zamani}</Row>
+          <Row>{cargo.sender_address_cargo.yerlesimAdi}</Row>
+          <Row>{cargo.Desi}</Row>
         </Col>
       </Row>
       <Row className="kargo_bilgiler--alt">
@@ -50,7 +50,7 @@ const CargoLoad = (props) => {
           ) : (
             <Row id='horizontal_line--left1'>Yüklemesi Planlanan Yer</Row>
           )}
-          <Row id='horizontal_line--left2'>{cargo.adres}</Row>
+          <Row id='horizontal_line--left2'>{cargo.receiver_full_address}</Row>
         </Col>
         <Col>
           <Row>
@@ -62,7 +62,7 @@ const CargoLoad = (props) => {
         </Col>
         <Col sm={4} className="text-right">
           <Row id='horizontal_line--right1'>Araç Yada Kurye İsmi</Row>
-          <Row id='horizontal_line--right2'>{cargo.alici}</Row>
+          <Row id='horizontal_line--right2'>{cargo.Kargo_Teslim_Eden_Kurye_ID}</Row>
         </Col>
       </Row>
     </Container>

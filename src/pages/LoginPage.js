@@ -1,39 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Form } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { useCookies } from "react-cookie";
+import { LoginUser } from "../api/api";
 import logo from "../assets/poshta_logo.png";
-import {LoginUser} from "../api/api";
-
-
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useCookies(["mytoken"]);
   const [passwordShown, setPasswordShown] = useState(false);
+  const [newUser, setNewUser] = useState("");
 
   let history = useHistory();
 
   const handleShow = () => {
     setPasswordShown(!passwordShown);
   };
-  
+
   const handleLogin = (e) => {
     e.preventDefault();
-    history.push('/operasyon')
-    // LoginUser({ email, password })
-    //   .then((resp) => {
-    //     console.log(resp.token);
-    //     setToken("mytoken", resp.token);
-    //   })
-  }; 
 
-  // useEffect(() => {
-  //   if (token["mytoken"]){
-  //     history.push("/operasyon");
-  //   }
-  // }, [history, token]);
+    LoginUser({ email, password })
+      .then((resp) => {
+        setToken("mytoken", resp.data.token);
+        setNewUser(resp.data.user);
+      })
+      .catch((err) => console.log("loginpage kısmı", err));
+  };
+
+  useEffect(() => {
+    if (token["mytoken"]) {
+      history.push("/operasyon");
+    }
+  }, [history, token]);
 
   return (
     <div id="login-container" className="container-fluid p-0 mt-5">
@@ -77,7 +77,10 @@ export default function LoginPage() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="show-hide">
-                      <span className={passwordShown ? 'hide' : 'show'} onClick={handleShow}></span>
+                      <span
+                        className={passwordShown ? "hide" : "show"}
+                        onClick={handleShow}
+                      ></span>
                     </div>
                   </div>
                   <div className="form-group">
@@ -105,4 +108,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

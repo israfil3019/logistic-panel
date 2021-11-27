@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { RiArrowUpSLine } from "react-icons/ri";
+import { getAllDepartments } from '../api/api'
+
 
 const DropDownContainer = styled("div")`
   width: 189px;
@@ -12,6 +14,7 @@ const DropDownContainer = styled("div")`
   box-shadow: 0 3px 6px #cbd5e6;
   margin: 4px;
   box-sizing: border-box;
+
 `;
 
 const DropDownHeader = styled("div")`
@@ -21,26 +24,50 @@ const DropDownHeader = styled("div")`
   font-size: 20px;
   font-weight: 600;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 0 10px;
   display:flex;
   justify-content:space-between;
+  align-items:center;
+
 `;
 
 const DropDownListContainer = styled("div")`
-  position: absolute;
+  position: relative;
+  bottom:10px;
   z-index: 100;
   width: 189px;
+  border: 4px solid #145aa0;
+  border-top:none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background: #ffffff;
+  overflow-y: auto;
+  height:150px;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #e9e9e9;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: hsl(210, 78%, 35%);
+  }
 `;
+
+
+
+
 
 const DropDownList = styled("ul")`
   padding: 10px 4px;
   margin: 0;
   background: #ffffff;
-  border: 2px solid #e5e5e5;
   box-sizing: border-box;
-  color: #004e9c;
-  font-size: 1.3rem;
-  font-weight: 500;
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
   &:first-child {
     padding-top: 10px;
   }
@@ -61,7 +88,17 @@ const ListItem = styled("li")`
 export default function DropdownSube() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const options = ["Kiev", "Kiev-2", "Kiev-3"];
+  const [options, setOptions] = useState([])
+
+  useEffect(() => {
+    getAllDepartments()
+      .then((res) => {
+        setOptions(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -81,8 +118,8 @@ export default function DropdownSube() {
         <DropDownListContainer>
           <DropDownList>
             {options.map((option) => (
-              <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
-                {option}
+              <ListItem onClick={onOptionClicked(option.Sube_Adi)} key={Math.random()}>
+                {option.Sube_Adi}
               </ListItem>
             ))}
           </DropDownList>

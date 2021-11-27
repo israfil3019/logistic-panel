@@ -7,13 +7,13 @@ import { FiSearch } from "react-icons/fi";
 const Operasyon = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTermm, setSearchTermm] = useState("");
-  const {cargos} = useContext(CargoContext);
+  const {cargosAssigned,cargosUnAssigned} = useContext(CargoContext);
 
-  const filteredCargos = cargos.filter(
-    (cargo) => cargo.ttn.toString().indexOf(searchTerm) > -1
+  const filteredCargos = cargosAssigned.filter(
+    (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTerm) > -1
   );
-  const filteredCargoss = cargos.filter(
-    (cargo) => cargo.ttn.toString().indexOf(searchTermm) > -1
+  const filteredCargosUn = cargosUnAssigned.filter(
+    (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTermm) > -1
   );
 
   return (
@@ -85,7 +85,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
-                {filteredCargoss
+                {filteredCargosUn
                   .filter((cargo) => !cargo.durum)
                   .map((cargo) => (
                     <CargoAssign cargo={cargo} key={cargo.id} />
