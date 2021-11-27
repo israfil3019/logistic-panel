@@ -8,7 +8,17 @@ export const CargoProvider = (props) => {
   const [cargosAssigned, setCargosAssigned] = useState([])
   const [cargosUnAssigned, setCargosUnAssigned] = useState([])
   const [token, setToken] = useCookies(["mytoken"]);
-
+ // let url = 'https://'
+  // useEffect(() => {
+  //   getData(url)
+  //     .then((res) => {
+  //       setCargos(res.data);
+  //       console.log(res.data)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   useEffect(() => {
     getCargosUnAssigned(token["mytoken"])

@@ -18,7 +18,6 @@ const CargoLoad = (props) => {
         <Col sm={1} className="checkbox">
           <Form.Check
             type="checkbox"
-            aria-label="option 1"
             checked={checked}
             onChange={handleChange}
             id="checkbox"
