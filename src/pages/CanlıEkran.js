@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { CargoContext } from "../context/CargoContext";
 import CargoLoad from "../components/CargoLoad";
@@ -47,7 +47,7 @@ const CanlıEkran = () => {
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
                 {filteredCargos
-                  .filter((cargo) => cargo.Kargo_Teslim_Tipi_ID)
+                  .filter((cargo) => !cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                     <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}
@@ -74,7 +74,7 @@ const CanlıEkran = () => {
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
                 {filteredCargoss
-                  .filter((cargo) => !cargo.Kargo_Teslim_Tipi_ID)
+                  .filter((cargo) => cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                       <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}

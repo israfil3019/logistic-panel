@@ -295,6 +295,7 @@ html {
   color: #145aa0;
 }
 #horizontal_line--right2 {
+  text-align: end;
   font-size: 14px;
   font-weight: 600;
   color: #145aa0;

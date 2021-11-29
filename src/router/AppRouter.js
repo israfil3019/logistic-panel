@@ -10,6 +10,7 @@ import Operasyon from "../pages/Operasyon";
 import LoginPage from "../pages/LoginPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { useCookies } from "react-cookie";
+import { ProvideAuth } from "../context/AuthContext";
 
 const AppRouter = () => {
   const [token] = useCookies(["mytoken"]);
@@ -19,26 +20,31 @@ const AppRouter = () => {
       <Navbar />
       <Buttons />
       <ProtectedRoute
+        auth={token["mytoken"]}
         exact
         path="/operasyon"
         component={Operasyon}
       />
       <ProtectedRoute
+        auth={token["mytoken"]}
         exact
         path="/canli-ekran"
         component={CanlıEkran}
       />
       <ProtectedRoute
+        auth={token["mytoken"]}
         exact
         path="/manifesto"
         component={Manifesto}
       />
       <ProtectedRoute
+        auth={token["mytoken"]}
         exact
         path="/zone-plan"
         component={ZonePlan}
       />
       <ProtectedRoute
+        auth={token["mytoken"]}
         exact
         path="/time-zone"
         component={TimeZone}
@@ -46,16 +52,17 @@ const AppRouter = () => {
     </div>
   );
   return (
-    <Router>
-      <Switch>
-        <Route
-          path="/"
-          exact
-          component={() => <LoginPage/>}
-        />
-        <Route exact component={token["mytoken"] ? AuthContainer : LoginPage} />
-      </Switch>
-    </Router>
+    <ProvideAuth>
+      <Router>
+        <Switch>
+          <Route path="/" exact component={() => <LoginPage />} />
+          <Route
+            exact
+            component={(token["mytoken"] !=='undefined' && token["mytoken"] ) ? AuthContainer : LoginPage}
+          />
+        </Switch>
+      </Router>
+    </ProvideAuth>
   );
 };
 

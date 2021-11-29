@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { CargoContext } from "../context/CargoContext";
 import CargoAssign from "../components/CargoAssign";
@@ -53,7 +53,7 @@ const Operasyon = () => {
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
                 {filteredCargos
-                  .filter((cargo) => cargo.durum)
+                  .filter((cargo) => !cargo.durum)
                   .map((cargo) => (
                     <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}
@@ -86,7 +86,7 @@ const Operasyon = () => {
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
                 {filteredCargosUn
-                  .filter((cargo) => !cargo.durum)
+                  .filter((cargo) => cargo.durum)
                   .map((cargo) => (
                     <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}

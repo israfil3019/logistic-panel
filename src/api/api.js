@@ -11,47 +11,63 @@ export const baseUrl = (path) =>
 // export const getData = async (url, token) => {
 //   const response = await axios.get(url, {
 //     headers: { "Content-Type": "application/json",
-//     Authorization: `Bearer ${token['mytoken']}`
+//     Authorization: `Bearer ${token}`
 //   },
 //   });
 //   return response;
 // };
 
 // export const getAllDepartments = async (url, token) => {
-//   const response = await axios.get(baseUrl(`url`), {
+//   const response = await axios.get(url, {
 //     headers: { "Content-Type": "application/json",
-//     Authorization: `Bearer ${token['mytoken']}`
+//     Authorization: `Bearer ${token}`
 //   },
 //   });
 //   return response;
 // };
 
-export const LoginUser = (body) => {
-  return fetch(baseUrl(`external/login`), {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(body),
-  }).then((response) => response.json());
-};
+// export const LoginUser = (body) => {
+//   return fetch(baseUrl(`external/login`), {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(body),
+//   }).then((response) => response.json());
+// };
 
-export const getAllDepartments = () => {
-  return fetch(baseUrl("logistic/departments"), {
+// export const LoginUser = async (body) => {
+//   const response = await fetch(baseUrl(`external/login`), {
+//      method: "POST",
+//      headers: {
+//        "Content-Type": "application/json",
+//      },
+//      body: JSON.stringify(body),
+//    });
+//    return response.json();
+//  };
+
+
+ 
+export const getAllDepartments = async ({url}) => {
+ const response = await fetch(baseUrl(url), {
     headers,
-  }).then((response) => response.json());
+  });
+  return response.json()
 };
 
-export const getCargosUnAssigned = () => {
-  return fetch(baseUrl("logistic/cargos/unassigned?page=1"), {
+
+export const getCargosAssigned = async ({url}) => {
+  const response = await fetch(baseUrl(url), {
     headers,
-  }).then((response) => response.json());
+  });
+  return response.json()
 };
 
-export const getCargosAssigned = () => {
-  return fetch(baseUrl("logistic/cargos/assigned?page=1"), {
+export const getCargosUnAssigned = async ({url1}) => {
+  const response = await fetch(baseUrl(url1), {
     headers,
-  }).then((response) => response.json());
+  });
+   return response.json()
 };
-
 

@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { useCookies } from "react-cookie";
-import { LoginUser } from "../api/api";
 import logo from "../assets/poshta_logo.png";
+import { useAuth } from "../context/AuthContext";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useCookies(["mytoken"]);
   const [passwordShown, setPasswordShown] = useState(false);
-  const [newUser, setNewUser] = useState("");
-
+  const { LoginUser } = useAuth();
   let history = useHistory();
 
   const handleShow = () => {
@@ -23,14 +22,19 @@ export default function LoginPage() {
 
     LoginUser({ email, password })
       .then((resp) => {
-        setToken("mytoken", resp.data.token);
-        setNewUser(resp.data.user);
+        if (!!resp.data.token) {
+          console.log(resp);
+          setToken("mytoken", resp.data.token);
+          window.localStorage.setItem("newUser", JSON.stringify(resp.data.user));
+          console.log(resp.data.user);
+        } else {
+          alert(resp.data.errors[0]);
+        }
       })
-      .catch((err) => console.log("loginpage kısmı", err));
+      .catch((err) => console.log(err));
   };
-
   useEffect(() => {
-    if (token["mytoken"]) {
+    if (token["mytoken"] !== "undefined") {
       history.push("/operasyon");
     }
   }, [history, token]);
@@ -62,6 +66,7 @@ export default function LoginPage() {
                       required=""
                       placeholder="****@gmail.com"
                       name="email"
+                      autoComplete="username"
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
@@ -74,6 +79,7 @@ export default function LoginPage() {
                       name="login[password]"
                       required=""
                       placeholder="*********"
+                      autoComplete="current-password"
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className="show-hide">

@@ -1,46 +1,53 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import {getCargosAssigned, getCargosUnAssigned } from "../api/api";
+// import { getCargosAssigned, getCargosUnAssigned, getData } from "../api/api";
 
 export const CargoContext = createContext();
 
 export const CargoProvider = (props) => {
-  const [cargosAssigned, setCargosAssigned] = useState([])
-  const [cargosUnAssigned, setCargosUnAssigned] = useState([])
-  const [token, setToken] = useCookies(["mytoken"]);
- // let url = 'https://'
+  const [cargosAssigned, setCargosAssigned] = useState([]);
+  const [cargosUnAssigned, setCargosUnAssigned] = useState([]);
+  const [token] = useCookies(["mytoken"]);
+
+  useEffect(() => {
+    fetch("https://panel.poshta.ua/api/logistic/cargos/assigned?page=1", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token["mytoken"]}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setCargosAssigned(response.data);
+        setCargosUnAssigned(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => console.log(error));
+  }, [token]);
+
+  // let url = 'logistic/cargos/assigned?page=1'
   // useEffect(() => {
-  //   getData(url)
+  //   getCargosUnAssigned({ url }, token['mytoken'])
   //     .then((res) => {
-  //       setCargos(res.data);
-  //       console.log(res.data)
+  //       setCargosUnAssigned(res.data);
+  //       console.log(res)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  //   getCargosAssigned({ url }, token['mytoken'])
+  //     .then((res) => {
+  //       setCargosAssigned(res.data);
+  //       console.log(res)
   //     })
   //     .catch((error) => {
   //       console.log(error);
   //     });
   // }, []);
 
-  useEffect(() => {
-    getCargosUnAssigned(token["mytoken"])
-      .then((res) => {
-        setCargosUnAssigned(res.data);
-        console.log(res)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    getCargosAssigned(token["mytoken"])
-      .then((res) => {
-        setCargosAssigned(res.data);
-        console.log(res)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   return (
-    <CargoContext.Provider value={{cargosAssigned, cargosUnAssigned}}>
+    <CargoContext.Provider value={{ cargosAssigned, cargosUnAssigned }}>
       {props.children}
     </CargoContext.Provider>
   );

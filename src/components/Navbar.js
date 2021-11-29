@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/poshta_logo.png";
 import avatar from "../assets/avatar.jpg";
 import { FaPowerOff } from "react-icons/fa";
@@ -6,20 +6,24 @@ import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { useHistory } from "react-router";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const [token, removeToken] = useCookies(["mytoken"]);
   let history = useHistory();
-  const { user } = useContext(AuthContext);
-  // console.log(user);
+  const [user, setUser] = useState();
 
   const handleLogout = () => {
     removeToken(["mytoken"]);
-    if (token['mytoken']) {
+    if (token["mytoken"]) {
       history.push("/");
     }
+    localStorage.removeItem("newUser");
   };
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("newUser")));
+  }, [setUser]);
+
   return (
     <div className="mybar">
       <div className="poshta_logo">

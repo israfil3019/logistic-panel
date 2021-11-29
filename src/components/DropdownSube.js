@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { RiArrowUpSLine } from "react-icons/ri";
 import { getAllDepartments } from '../api/api'
+import { useCookies } from "react-cookie";
 
 
 const DropDownContainer = styled("div")`
@@ -36,7 +37,7 @@ const DropDownListContainer = styled("div")`
   bottom:10px;
   z-index: 100;
   width: 189px;
-  border: 4px solid #145aa0;
+  border: 1px solid #145aa0;
   border-top:none;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -44,15 +45,18 @@ const DropDownListContainer = styled("div")`
   overflow-y: auto;
   height:150px;
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   &::-webkit-scrollbar-track {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 5px;
     background-color: #e9e9e9;
+    margin:4px 0;
+
   }
   &::-webkit-scrollbar-thumb {
     background-color: hsl(210, 78%, 35%);
+    border-radius: 10px;
+
   }
 `;
 
@@ -89,16 +93,37 @@ export default function DropdownSube() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [options, setOptions] = useState([])
+  const [token] = useCookies(["mytoken"]);
+
+  let url = "logistic/departments";
 
   useEffect(() => {
-    getAllDepartments()
+    getAllDepartments(
+      { url }, token['mytoken']
+      )
       .then((res) => {
         setOptions(res);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [token, url]);
+  // useEffect(() => {
+  //   fetch("https://panel.poshta.ua/api/logistic/departments", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${token["mytoken"]}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((response) => {
+  //       setOptions(response);
+  //       console.log(response);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, [token]);
+
 
   const toggling = () => setIsOpen(!isOpen);
 
