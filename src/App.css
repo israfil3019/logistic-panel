@@ -267,6 +267,7 @@ html {
   padding-bottom: 24px;
   padding-top: 24px;
   box-sizing: border-box;
+  margin-bottom: 1px;
 }
 .kargo_bilgileri--üst {
   margin-bottom: 12px;
@@ -338,6 +339,9 @@ html {
 /* Kargo Gösterim End */
 
 /* Login Page Start */
+#login-container{
+  background-position: center;
+}
 .img-cotainer {
   display: flex;
   justify-content: center;

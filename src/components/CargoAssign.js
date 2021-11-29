@@ -24,7 +24,7 @@ const CargoAssign = (props) => {
             />
           </Form.Check>
         </Col>
-        <Col sm={5}>
+        <Col sm={4}>
           <Row>Kargo numarası</Row>
           <Row>Gönderici Müşteri İsmi</Row>
           <Row>Alıcı Müşteri İsmi</Row>
@@ -33,13 +33,13 @@ const CargoAssign = (props) => {
           <Row>Zone</Row>
           <Row>Desi</Row>
         </Col>
-        <Col sm={6} className="text-right">
+        <Col sm={7} className="text-right">
           <Row>{cargo.Barkod_Kodu}</Row>
           <Row>{cargo.sender_full_name}</Row>
           <Row>{cargo.receiver_full_name}</Row>
           <Row>{cargo.receiver_full_address}</Row>
           <Row>{cargo.Kargo_Teslim_Zamani}</Row>
-          <Row>{cargo.sender_address_cargo.yerlesimAdi}</Row>
+          <Row>{cargo.zone_id}</Row>
           <Row>{cargo.Desi}</Row>
         </Col>
       </Row>

@@ -23,7 +23,7 @@ const CargoLoad = (props) => {
             id="checkbox"
           />
         </Col>
-        <Col sm={5}>
+        <Col sm={4}>
           <Row>Kargo numarası</Row>
           <Row>Gönderici Müşteri İsmi</Row>
           <Row>Alıcı Müşteri İsmi</Row>
@@ -32,24 +32,24 @@ const CargoLoad = (props) => {
           <Row>Zone</Row>
           <Row>Desi</Row>
         </Col>
-        <Col sm={6} className="text-right">
-        <Row>{cargo.Barkod_Kodu}</Row>
+        <Col sm={7} className="text-right">
+          <Row>{cargo.Barkod_Kodu}</Row>
           <Row>{cargo.sender_full_name}</Row>
           <Row>{cargo.receiver_full_name}</Row>
           <Row>{cargo.receiver_full_address}</Row>
           <Row>{cargo.Kargo_Teslim_Zamani}</Row>
-          <Row>{cargo.sender_address_cargo.yerlesimAdi}</Row>
+          <Row>{cargo.zone_id}</Row>
           <Row>{cargo.Desi}</Row>
         </Col>
       </Row>
       <Row className="kargo_bilgiler--alt">
-        <Col sm={4} >
+        <Col sm={4}>
           {cargo.yukleme ? (
-            <Row id='horizontal_line--left1'>Yüklenen Yer</Row>
+            <Row id="horizontal_line--left1">Yüklenen Yer</Row>
           ) : (
-            <Row id='horizontal_line--left1'>Yüklemesi Planlanan Yer</Row>
+            <Row id="horizontal_line--left1">Yüklemesi Planlanan Yer</Row>
           )}
-          <Row id='horizontal_line--left2'>{cargo.receiver_full_address}</Row>
+          <Row id="horizontal_line--left2">{cargo.receiver_full_address}</Row>
         </Col>
         <Col>
           <Row>
@@ -60,8 +60,10 @@ const CargoLoad = (props) => {
           </Row>
         </Col>
         <Col sm={4} className="text-right">
-          <Row id='horizontal_line--right1'>Araç Yada Kurye İsmi</Row>
-          <Row id='horizontal_line--right2'>{cargo.Kargo_Teslim_Eden_Kurye_ID}</Row>
+          <Row id="horizontal_line--right1">Araç Yada Kurye İsmi</Row>
+          <Row id="horizontal_line--right2">
+            {cargo.courier[0].full_name ? cargo.courier[0].full_name : cargo.carinfo[0]}
+          </Row>
         </Col>
       </Row>
     </Container>

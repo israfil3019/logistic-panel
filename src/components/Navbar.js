@@ -12,13 +12,13 @@ const Navbar = () => {
   const [token, removeToken] = useCookies(["mytoken"]);
   let history = useHistory();
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
   const handleLogout = () => {
-    if (token["mytoken"]) {
+    removeToken(["mytoken"]);
+    if (token['mytoken']) {
       history.push("/");
     }
-    removeToken(["mytoken"]);
   };
   return (
     <div className="mybar">
