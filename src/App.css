@@ -90,10 +90,26 @@ html {
   height: 34px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
-.navbar_right button:hover{
+.navbar_right button:hover .top-react-icons{
+  color: rgb(185, 70, 70);
   transform: scale(1.2);
   transition: 0.3s;
 }
+/* navbar right icon tooltip*/
+#navbar_tooltip-bottom > .tooltip-inner {
+  background-color: rgba(66, 12, 8, 0.05);
+  color: #145aa0;
+  border: 1px solid rgb(185, 70, 70);
+  padding: 2px 4px!important;
+  font-weight: bold;
+}
+#navbar_tooltip-bottom{
+  margin-top: 10px;
+}
+.navbar_tooltip > .tooltip-arrow::before{
+  border-bottom-color: rgb(185, 70, 70)!important;
+}
+
 
 /* navbar links */
 .navbar_list {
@@ -380,7 +396,7 @@ html {
   box-sizing: border-box;
   
 }
-.tooltip-arrow::before{
+#tooltip-top > .tooltip-arrow::before{
   border-top-color: #145aa0!important;
 }
 

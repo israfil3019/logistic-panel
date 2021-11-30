@@ -6,11 +6,18 @@ import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { useHistory } from "react-router";
 import { useCookies } from "react-cookie";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 const Navbar = () => {
   const [token, removeToken] = useCookies(["mytoken"]);
   let history = useHistory();
   const [user, setUser] = useState();
+  const renderTooltipNavbar = (props) => (
+    <Tooltip {...props} className="navbar_tooltip" id="navbar_tooltip-bottom">
+      Logout
+    </Tooltip>
+  );
 
   const handleLogout = () => {
     removeToken(["mytoken"]);
@@ -75,11 +82,13 @@ const Navbar = () => {
           <div>{user?.name ? <p>{user.name}</p> : <p>İsimsiz isim</p>}</div>
         </div>
         <div>
-          <button onClick={handleLogout} className="btn rounded-circle">
-            <IconContext.Provider value={{ className: "top-react-icons" }}>
-              <FaPowerOff />
-            </IconContext.Provider>
-          </button>
+          <OverlayTrigger placement="bottom" overlay={renderTooltipNavbar}>
+            <button onClick={handleLogout} className="btn rounded-circle">
+              <IconContext.Provider value={{ className: "top-react-icons" }}>
+                <FaPowerOff />
+              </IconContext.Provider>
+            </button>
+          </OverlayTrigger>
         </div>
       </div>
     </div>
