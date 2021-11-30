@@ -40,7 +40,7 @@ export default function LoginPage() {
   }, [history, token]);
 
   return (
-    <div id="login-container" className="container-fluid p-0 mt-5">
+    <div id="login-container" className="container-fluid p-0">
       <div className="row m-0">
         <div className="col-12 p-0">
           <div className="login-card">

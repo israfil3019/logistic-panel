@@ -412,8 +412,16 @@ html {
 
 /* Login Page Start */
 #login-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("assets/login_bg.jpg");
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 .img-cotainer {
   display: flex;
   justify-content: center;
