@@ -5,6 +5,18 @@ html {
   padding: 0;
   font-family: Gilroy;
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+html::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 @font-face {
   font-family: Gilroy;
   src: url("assets/gilroy-bold-cufonfonts/Gilroy-Medium.ttf");
@@ -172,6 +184,10 @@ html {
   position: relative;
   right: 8px;
 }
+.checkbox-load{
+  position: relative;
+  top:40px;
+}
 
 #checkbox {
   -webkit-appearance: none;
@@ -260,14 +276,17 @@ html {
 .yellow {
   border-left: 8px solid #fed368;
 }
+.kargo_bilgileri_container{
+  border-bottom: 2px solid #f7f7f7;
+  padding: 0!important;
+
+}
 .kargo_bilgileri {
   font-size: 12px;
   font-weight: 500;
-  border-bottom: 2px solid #f7f7f7;
   padding-bottom: 24px;
   padding-top: 24px;
   box-sizing: border-box;
-  margin-bottom: 1px;
 }
 .kargo_bilgileri--üst {
   margin-bottom: 12px;
@@ -307,6 +326,7 @@ html {
   height: 2px;
 }
 .horizontal_line--dot1 {
+  cursor: pointer;
   position: relative;
   top: -3px;
   right: 15px;
@@ -314,8 +334,10 @@ html {
   height: 8px;
   background: #fed368;
   border-radius: 50%;
+
 }
 .horizontal_line--dot2 {
+  cursor: pointer;
   position: relative;
   top: -11px;
   left: 146px;
@@ -323,6 +345,19 @@ html {
   height: 8px;
   background: #fed368;
   border-radius: 50%;
+
+}
+.horizontal_line--dot2:hover{
+  border: 1px solid white;
+  outline: #145aa0 1px solid;
+  transform: scale(1.5);
+  transition: ease-in-out all 0.3s;
+}
+.horizontal_line--dot1:hover{
+  border: 1px solid white;
+  outline: #145aa0 1px solid;
+  transform: scale(1.5);
+  transition: ease-in-out all 0.3s;
 }
 .text-right {
   display: flex;
@@ -330,6 +365,26 @@ html {
   align-items: flex-end;
 }
 
+/* kargo bilgileri nokta tooltips start*/
+#tooltip-top > .tooltip-inner {
+  background-color: rgba(8, 21, 66, 0.05);
+  color: #000;
+  border: 1px solid #145aa0;
+  padding: 2px 4px!important;
+}
+#tooltip-top{
+  margin-bottom: 10px;
+}
+#tooltip-top > .tooltip-arrow {
+  border-top: 3px solid #fed368;
+  box-sizing: border-box;
+  
+}
+.tooltip-arrow::before{
+  border-top-color: #145aa0!important;
+}
+
+/* kargo bilgileri nokta tooltips end*/
 #assign_kargo_row {
   padding: 0 16px 16px 30px;
 }
@@ -391,7 +446,7 @@ html {
 .checkbox_remember label {
   margin: 0 0px 10px 10px;
 }
-#checkbox1 {
+#checkbox_rmb {
   border: 1px solid #dfdfdf;
   padding: 8px;
   margin: 0;

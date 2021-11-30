@@ -91,8 +91,8 @@ export default function LoginPage() {
                   </div>
                   <div className="form-group">
                     <div className="checkbox_remember">
-                      <Form.Check id="checkbox1" type="checkbox" />
-                      <label className="text-muted" htmlFor="checkbox1">
+                      <Form.Check id="checkbox_rmb" type="checkbox" />
+                      <label className="text-muted" htmlFor="checkbox_rmb">
                         Remember password
                       </label>
                     </div>
