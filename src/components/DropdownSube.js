@@ -43,6 +43,7 @@ const DropDownListContainer = styled("div")`
   border-bottom-right-radius: 10px;
   background: #ffffff;
   overflow-y: auto;
+  overflow-x:hidden;
   height:150px;
   &::-webkit-scrollbar {
     width: 5px;
@@ -102,6 +103,7 @@ export default function DropdownSube() {
       { url }, token['mytoken']
       )
       .then((res) => {
+        console.log(res)
         setOptions(res);
       })
       .catch((error) => {
@@ -144,7 +146,7 @@ export default function DropdownSube() {
           <DropDownList>
             {options.map((option) => (
               <ListItem onClick={onOptionClicked(option.Sube_Adi)} key={Math.random()}>
-                {option.Sube_Adi}
+                {option.Sube_Adi}{option.Sube_Kodu}
               </ListItem>
             ))}
           </DropDownList>

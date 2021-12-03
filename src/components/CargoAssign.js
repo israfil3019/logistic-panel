@@ -7,6 +7,7 @@ const CargoAssign = (props) => {
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
+  
   let myClass = "kargo_bilgileri";
   if (cargo.Kargo_Durum_ID === 1) myClass = "kargo_bilgileri red";
   else if (cargo.type === 2) myClass = "kargo_bilgileri blue";

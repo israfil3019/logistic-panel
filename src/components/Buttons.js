@@ -8,13 +8,13 @@ const Buttons = () => {
       <Link
         to="/operasyon/zone-group"
       >
-        <button type="button" className="btn btn-lg bg-white text-primary m-1">
+        <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Zone Grup
         </button>
       </Link>
 
       <Link to="/operasyon/zone">
-        <button type="button" className="btn btn-lg bg-white text-primary m-1">
+        <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Zone
         </button>
       </Link>
@@ -26,13 +26,13 @@ const Buttons = () => {
       </Link>
 
       <Link to="/operasyon/arac">
-        <button type="button" className="btn btn-lg bg-white text-primary m-1">
+        <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Araç
         </button>
       </Link>
 
       <Link to="/operasyon/kurye">
-        <button type="button" className="btn btn-lg bg-white text-primary m-1">
+        <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Kurye
         </button>
       </Link>

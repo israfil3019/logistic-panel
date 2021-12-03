@@ -21,7 +21,7 @@ export const CargoProvider = (props) => {
       .then((response) => {
         setCargosAssigned(response.data);
         setCargosUnAssigned(response.data);
-        console.log(response.data);
+        console.log(response);
       })
       .catch((error) => console.log(error));
   }, [token]);

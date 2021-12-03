@@ -24,7 +24,7 @@ function useProvideAuth() {
       },
       body: JSON.stringify(body),
     })
-    return await response.json();
+    return response.json();
   };
 
   return {
