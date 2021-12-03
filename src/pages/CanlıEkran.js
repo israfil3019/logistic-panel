@@ -9,10 +9,10 @@ const CanlıEkran = () => {
   const [searchTermm, setSearchTermm] = useState("");
   const { cargosAssigned } = useContext(CargoContext);
 
-  const filteredCargos = cargosAssigned.filter(
+  const filteredCargos = cargosAssigned?.filter(
     (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTerm) > -1
   );
-  const filteredCargoss = cargosAssigned.filter(
+  const filteredCargoss = cargosAssigned?.filter(
     (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTermm) > -1
   );
 
@@ -46,8 +46,7 @@ const CanlıEkran = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
-                {filteredCargos
-                  .filter((cargo) => !cargo.Kargo_Teslim_Tipi_ID)
+                {filteredCargos?.filter((cargo) => !cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                     <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}
@@ -73,8 +72,7 @@ const CanlıEkran = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
-                {filteredCargoss
-                  .filter((cargo) => cargo.Kargo_Teslim_Tipi_ID)
+                {filteredCargoss?.filter((cargo) => cargo.Kargo_Teslim_Tipi_ID)
                   .map((cargo) => (
                       <CargoLoad cargo={cargo} key={cargo.id} />
                   ))}

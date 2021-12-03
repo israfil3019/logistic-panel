@@ -9,10 +9,10 @@ const Operasyon = () => {
   const [searchTermm, setSearchTermm] = useState("");
   const {cargosAssigned,cargosUnAssigned} = useContext(CargoContext);
 
-  const filteredCargos = cargosAssigned.filter(
+  const filteredCargos = cargosAssigned?.filter(
     (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTerm) > -1
   );
-  const filteredCargosUn = cargosUnAssigned.filter(
+  const filteredCargosUn = cargosUnAssigned?.filter(
     (cargo) => cargo.Barkod_Kodu.toString().indexOf(searchTermm) > -1
   );
 
@@ -52,8 +52,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row">
               <Col className="assign_kargo">
-                {filteredCargos
-                  .filter((cargo) => !cargo.durum)
+                {filteredCargos?.filter((cargo) => !cargo.durum)
                   .map((cargo) => (
                     <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}
@@ -85,8 +84,7 @@ const Operasyon = () => {
             </Row>
             <Row className="justify-content-center" id="assign_kargo_row2">
               <Col className="assign_kargo">
-                {filteredCargosUn
-                  .filter((cargo) => cargo.durum)
+                {filteredCargosUn?.filter((cargo) => cargo.durum)
                   .map((cargo) => (
                     <CargoAssign cargo={cargo} key={cargo.id} />
                   ))}

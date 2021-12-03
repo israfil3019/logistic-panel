@@ -98,39 +98,39 @@ export default function DropdownSube() {
 
   let url = "logistic/departments";
 
-  useEffect(() => {
-    getAllDepartments(
-      { url }, token['mytoken']
-      )
-      .then((res) => {
-        console.log(res)
-        setOptions(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [token, url]);
   // useEffect(() => {
-  //   fetch("https://panel.poshta.ua/api/logistic/departments", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token["mytoken"]}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((response) => {
-  //       setOptions(response);
-  //       console.log(response);
+  //   getAllDepartments(
+  //     { url }, token['mytoken']
+  //     )
+  //     .then((res) => {
+  //       console.log(res)
+  //       setOptions(res);
   //     })
-  //     .catch((error) => console.log(error));
-  // }, [token]);
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [token, url]);
+  useEffect(() => {
+    fetch("https://panel.poshta.ua/api/logistic/departments", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token["mytoken"]}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setOptions(response);
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
+  }, [token]);
 
 
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
+  const onOptionClicked = (option) => () => {
+    setSelectedOption(option.Sube_Adi + option.Sube_Kodu);
     setIsOpen(false);
     console.log(selectedOption);
   };
@@ -145,7 +145,7 @@ export default function DropdownSube() {
         <DropDownListContainer>
           <DropDownList>
             {options.map((option) => (
-              <ListItem onClick={onOptionClicked(option.Sube_Adi)} key={Math.random()}>
+              <ListItem onClick={onOptionClicked(option)} key={Math.random()}>
                 {option.Sube_Adi}{option.Sube_Kodu}
               </ListItem>
             ))}

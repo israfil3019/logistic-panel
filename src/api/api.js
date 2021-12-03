@@ -1,7 +1,7 @@
 // import axios from "axios";
 
 const headers = {
-  Authorization: "Bearer 2212|UWO5RjSDCzeUAlxmtt1fIBAUd71DKAArxpdAAeCu",
+  Authorization: "Bearer 3083%7CNfSy23cF43A2U7YLKCZv07AMUvsLNE8wdNX11O54",
   "Content-Type": "application/json",
 };
 
@@ -47,6 +47,14 @@ export const baseUrl = (path) =>
 //    return response.json();
 //  };
 
+// export const getAllDepartments = async ({url, token}) => {
+//   const response = await fetch(baseUrl(url), {
+//    headers: { "Content-Type": "application/json",
+//    Authorization: `Bearer ${token}`
+//  }});
+//    return response.json()
+//  };
+ 
 
  
 export const getAllDepartments = async ({url}) => {

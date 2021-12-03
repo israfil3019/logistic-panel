@@ -25,13 +25,13 @@ const Buttons = () => {
         </button>
       </Link>
 
-      <Link to="/operasyon/arac">
+      <Link to="/arac">
         <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Araç
         </button>
       </Link>
 
-      <Link to="/operasyon/kurye">
+      <Link to="/kurye">
         <button type="button" id='bg_slider' className="btn btn-lg bg-white text-primary m-1">
           Kurye
         </button>

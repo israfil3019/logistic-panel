@@ -8,6 +8,8 @@ import TimeZone from "../pages/TimeZone";
 import ZonePlan from "../pages/ZonePlan";
 import Operasyon from "../pages/Operasyon";
 import LoginPage from "../pages/LoginPage";
+import Kurye from "../pages/Kurye";
+import Arac from "../pages/Arac";
 import ProtectedRoute from "./ProtectedRoute";
 import { useCookies } from "react-cookie";
 import { ProvideAuth } from "../context/AuthContext";
@@ -48,6 +50,18 @@ const AppRouter = () => {
         exact
         path="/time-zone"
         component={TimeZone}
+      />
+      <ProtectedRoute
+        auth={token["mytoken"]}
+        exact
+        path="/kurye"
+        component={Kurye}
+      />
+      <ProtectedRoute
+        auth={token["mytoken"]}
+        exact
+        path="/arac"
+        component={Arac}
       />
     </div>
   );
